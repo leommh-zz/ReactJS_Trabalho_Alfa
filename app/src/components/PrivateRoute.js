@@ -4,9 +4,6 @@ import { isAutenticado } from '../utils/LoginManager';
 
 const PrivateRoute = (props) => {
 
-    //  {} Destructoring
-    //  ... Spread Operation
-
     const { component: Component, ...others } = props;
 
     return (
@@ -14,11 +11,11 @@ const PrivateRoute = (props) => {
             render = {propsRender => {
                 return (
                     isAutenticado()
-                        ? <Component {...propsRender} />
-                        : <Redirect to = {{
-                            pathname: '/login',
-                            state: { from: propsRender.location }
-                        }} />
+                    ? <Component {...propsRender} />
+                    : <Redirect to = {{
+                        pathname: '/login',
+                        state: { from: propsRender.location }
+                    }} />
                 )
             }}
         />

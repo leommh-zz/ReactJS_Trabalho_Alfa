@@ -5,20 +5,16 @@ import { FaUserAlt,FaAt,FaMoneyCheck,FaKey,FaCalendarAlt  } from "react-icons/fa
 
 class CadastroPage extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-        modal: false
-      };
-      this.toggle = this.toggle.bind(this);
-    }
-  
-    toggle() {
-      this.setState({
-        modal: !this.state.modal
-      });
+  state = {
+    modal: false
   }
+
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
 
   onSubmit = (e) => {
     cadUsuario(this.state)
@@ -42,16 +38,6 @@ class CadastroPage extends Component {
     const {erros} = this.state;
     return (
       <div>
-        {/* <h1>Novo Usuário</h1>
-        <form onSubmit={this.onSubmit}>
-          <Input placeholder="nome" name="nome" type="text" onChange={this.onChange} required />
-          <Input placeholder="e-mail" name="email" type="email" onChange={this.onChange} required />
-          <Input placeholder="cpf" name="cpf" type="text" onChange={this.onChange} required />
-          <Input placeholder="data de nascimento" name="nascimento" type="date" onChange={this.onChange} required />
-          <Input placeholder="senha" name="senha" type="password" onChange={this.onChange} required />
-          <Button type="submit">Cadastrar</Button>
-        </form> */}
-
         <br></br>
 
         <Button outline color="success" onClick={this.toggle}>Novo</Button>

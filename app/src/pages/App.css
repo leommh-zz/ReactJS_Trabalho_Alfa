@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color: rgb(80, 80, 80);
+  background-color: #000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,8 +18,7 @@
 }
 
 body {
-  background: url('../img/background.jpg') no-repeat;
-  background-color:#4eada7;
+  background-color:#333;
   background-position: top;
 }
 
@@ -29,12 +28,10 @@ header {
 }
 
 .container{
-  max-width: 900px;
-  background:rgba(255,255,255,0.9);
+  max-width: '100%';
+  background: #fff;
   padding: 50px;
   margin: 50px auto;
-  border:20px solid white;
-  border-radius:10px;
 }
 
 .login-page {
@@ -55,6 +52,7 @@ header {
 
 .login-page h1 {
   text-align: center;
+  color: #FFF;
 }
 
 
@@ -66,6 +64,12 @@ header {
 
 input {
   margin-bottom: 10px;
+  border: 5px solid white;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 5px solid white;
 }
 
 label {
@@ -75,6 +79,7 @@ label {
 
 .input-group {
   margin-bottom: 10px;
+  
 }
 
 .input-table{
@@ -95,4 +100,8 @@ label {
   width:100%;
   margin-bottom: 25px;
   padding: 5px;
+}
+
+.menu {
+  border: 1px solid black;
 }

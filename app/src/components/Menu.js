@@ -2,8 +2,8 @@ import React from 'react';
 import { isAutenticado, setAutenticado } from '../utils/LoginManager';
 import { Nav, NavItem} from 'reactstrap';
 import {
-  Link,
-  withRouter,
+    Link,
+    withRouter,
 } from 'react-router-dom';
 
 const Menu = (props) => {
@@ -13,36 +13,37 @@ const Menu = (props) => {
     return (
         <div>
 
-        <Nav>
-            <NavItem>
-            <Link className="nav-link" to="/"> Home </Link>
-            </NavItem>
-
-            { aut && (
+            <Nav className="menu">
                 <NavItem>
-                <Link className="nav-link" to="/tarefas"> Tarefas </Link>
+                <Link className="nav-link" to="/"> Home </Link>
                 </NavItem>
-            ) }
 
-            {
-                aut && (
-                    <NavItem>
-                    <a  href="/" 
-                        className="nav-link" 
-                        onClick={
-                            ()=> {
-                                setAutenticado(false);
-                                props.history.push('/');
-                            }
-                        }>
-                        Sair
-                    </a>
-                    </NavItem>
-                    
-                )
-            }
+                { 
+                    aut && (
+                        <NavItem>
+                        <Link className="nav-link" to="/tarefas"> Tarefas </Link>
+                        </NavItem>
+                    ) 
+                }
 
-        </Nav>
+                {
+                    aut && (
+                        <NavItem>
+                        <a  href="/" 
+                            className="nav-link" 
+                            onClick={
+                                ()=> {
+                                    setAutenticado(false);
+                                    props.history.push('/');
+                                }
+                            }>
+                            Sair
+                        </a>
+                        </NavItem>
+                    )
+                }
+
+            </Nav>
         </div>
     );
 

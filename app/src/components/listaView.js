@@ -8,65 +8,54 @@ import TaskForm from '../components/TaskForm';
 
 class listaView extends Component {
 
-    constructor() {
+    state = {
+        tarefas : [], 
+        inputTarefa: '',
+        lista: [],
+        busca:'',
+    }
 
-        super();
+    lista = () => {
+        let {busca} = this.state;
+        buscaTarefas(busca).then(res => this.setState({lista: res.data}));
+    }
 
-        this.state = { 
-            tarefas : [], 
-            inputTarefa: '',
-            lista: [],
-            busca:'',
-        };
+    busca = (e) => {
+        let valor = e.target.value;
+        this.setState({busca:valor});
+        this.lista();
+    }
 
-        // this.lista = async () => {
-        //     await getTarefas().then(res => this.setState({lista: res.data}) );
-        // }
+    removeTarefa = async (id) => {
+        await delTarefa(id);
+        this.lista();
+    }
 
-        this.lista = () => {
-            let {busca} = this.state;
-            buscaTarefas(busca).then(res => this.setState({lista: res.data}));
+    editarTarefa = async (id, dados) => {
+        await editaTarefa(id, dados);
+        this.lista();
+    }
+
+    onChange = (event) => {
+        const state = Object.assign({}, this.state);
+        const campo = event.target.name;
+        state[campo] = event.target.value;
+        this.setState(state);
+    }
+
+    alterarEstado = async (id, status) => {
+        if (status === 1){
+            await desconcluiTarefa(id);
+        } else {
+            await concluiTarefa(id);
         }
-
-        this.busca = (e) => {
-            let valor = e.target.value;
-            this.setState({busca:valor});
-            this.lista();
-        }
-
-        this.removeTarefa = async (id) => {
-            await delTarefa(id);
-            this.lista();
-        }
-
-        this.editarTarefa = async (id, dados) => {
-            await editaTarefa(id, dados);
-            this.lista();
-        }
-
-        this.onChange = (event) => {
-            const state = Object.assign({}, this.state);
-            const campo = event.target.name;
-            state[campo] = event.target.value;
-            this.setState(state);
-        }
-
-        this.alterarEstado = async (id, status) => {
-            if (status === 1){
-                await desconcluiTarefa(id);
-            } else {
-                await concluiTarefa(id);
-            }
-            this.lista();
-        }
-
-    } // constructor
+        this.lista();
+    }
 
     componentDidMount(){
         this.setState({busca:''});
         this.lista();
     }
-
 
     render () {
 
@@ -74,48 +63,43 @@ class listaView extends Component {
 
         return (
             <div>
-            <h1>lista de tarefas</h1>
-            <Input onChange={this.busca} value={this.state.busca} placeholder="busca por título" />
-            {/* <Input name="inputTarefa" value={this.state.inputTarefa} onChange={this.onChange} />
-            <Button onClick={this.addTarefa}>adicionar</Button> */}
 
-            { lista.length > 0 ?
+                <h1>lista de tarefas</h1>
+                <Input onChange={this.busca} value={this.state.busca} placeholder="busca por título" />
 
-            <div>
-
-
-                <Table>
-                <tr>
-                    <th width='10'>Nº</th>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th width='50'>Concluida</th>
-                    <th width='150'>...</th>
-                </tr>
-                {
-                    lista.map ((tarefa, index) => 
-                    <ListaViewItem tarefa={tarefa} 
-                    index={index} 
-                    removeTarefa={this.removeTarefa} 
-                    editarTarefa={this.editarTarefa} 
-                    alterarEstado={this.alterarEstado}
-                    />
-                    
+                { 
+                    lista.length > 0 
+                    ? (
+                        <div>
+                            <Table>
+                                <tr>
+                                    <th width='10'>Nº</th>
+                                    <th>Título</th>
+                                    <th>Descrição</th>
+                                    <th width='50'>Concluida</th>
+                                    <th width='150'>...</th>
+                                </tr>
+                                {
+                                    lista.map ((tarefa, index) => 
+                                        <ListaViewItem tarefa={tarefa} 
+                                            index={index} 
+                                            removeTarefa={this.removeTarefa} 
+                                            editarTarefa={this.editarTarefa} 
+                                            alterarEstado={this.alterarEstado}
+                                        />
+                                    )
+                                }
+                            </Table>
+                        </div>
+                    ) :  (
+                        <Alert color='warning'>Nenhuma tarefa encontrada</Alert> 
                     )
-                    }
-                </Table>
-            
+                
+                }
+
+                <TaskForm finish={this.lista}  />
+
             </div>
-
-            : <Alert color='warning'>Nenhuma tarefa encontrada</Alert> }
-
-            
-
-            <TaskForm finish={this.lista}  />
-
-           
-
-        </div>
         );
     }
 

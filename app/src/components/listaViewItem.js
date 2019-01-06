@@ -4,47 +4,40 @@ import { FaPencilAlt, FaRedo, FaTrash, FaTimes, FaSave} from "react-icons/fa";
 
 
 class listaViewItem extends Component {
+    
+    state = { 
+        edit: false, 
+        titulo: this.props.tarefa.titulo,
+        descricao: this.props.tarefa.descricao,
+        status: this.props.tarefa.concluida,
+    };
 
-    constructor(props) {
-        super(props);
-        this.state = { 
-            edit: false, 
-            titulo: props.tarefa.titulo,
-            descricao: props.tarefa.descricao,
-            status: props.tarefa.concluida,
-        };
+    removeTarefa = () => {
+        this.props.removeTarefa(this.props.tarefa.id);
+    }
 
-        this.removeTarefa = () => {
-            this.props.removeTarefa(this.props.tarefa.id);
-        }
+    editarTarefa = () => {
+        const id = this.props.tarefa.id;
+        const {titulo, descricao} = this.state;
+        this.props.editarTarefa(id, {titulo, descricao});
+        this.setState({edit:false});
+    }
 
-        this.editarTarefa = () => {
-            // this.props.editarTarefa(this.props.index, this.state.texto);
-            const id = this.props.tarefa.id;
-            const {titulo, descricao} = this.state;
-            this.props.editarTarefa(id, {titulo, descricao});
-            this.setState({edit:false});
-        }
+    abrirForm = () => {
+        this.setState({edit: true});
+    }
 
-        this.abrirForm = () => {
-            this.setState({edit: true});
-        }
+    fecharForm = () => {
+        this.setState({edit: false});
+    }
 
-        this.fecharForm = () => {
-            this.setState({edit: false});
-        }
+    onChange = (ev) => {
+        this.setState({[ev.target.name]: ev.target.value});
+    }
 
-        this.onChange = (ev) => {
-            this.setState({[ev.target.name]: ev.target.value});
-        }
-
-        this.alterarEstado = () =>{
-            this.props.alterarEstado(this.props.tarefa.id, this.props.tarefa.concluida);
-        }
-
-
-
-    } // constructor
+    alterarEstado = () =>{
+        this.props.alterarEstado(this.props.tarefa.id, this.props.tarefa.concluida);
+    }
 
     render(){
 
@@ -74,8 +67,6 @@ class listaViewItem extends Component {
                 { this.props.tarefa.concluida === 1 ? <span className='text-success'>SIM</span> : <span className='text-warning'>NÃO</span> } &nbsp;
                 </td>
                 <td>
-                    {/* <a href="#" title='salvar' className='text-success' onClick={this.editarTarefa}>  </a> &nbsp;
-                    <a href="#" title='cancelar' onClick={this.fecharForm}>  </a> */}
                     <Button outline size='sm' color='primary' title='alterar estado' onClick={this.alterarEstado}><FaRedo /></Button>
                     <Button outline size='sm' color='success' title='salvar' onClick={this.editarTarefa}><FaSave /></Button>
                     <Button outline size='sm' color='danger' title='cancelar' onClick={this.fecharForm}>< FaTimes /></Button>

@@ -4,24 +4,20 @@ import FormLogin from '../components/FormLogin';
 
 class LoginPage extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {cadastro:false};
+  state = {
+    cadastro: false
+  }
 
-    this.cadastro = () => {
-      this.setState({cadastro:true});
-    }
+  cadastro = () => {
+    this.setState({cadastro: true});
+  }
 
-    this.cancela = () => {
-      this.setState({cadastro:false});
-    }
-
-
-  } //constructor
+  cancela = () => {
+    this.setState({cadastro: false});
+  }
 
   render() {
     const {cadastro} = this.state;
-    // const BloquearNavegacao = Boolean(email||senha);
 
     if (cadastro) {
       return (<CadastroPage onLogin={this.props.onLogin} cancela={this.cancela} />)
