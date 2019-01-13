@@ -47,28 +47,28 @@ class CadastroPage extends Component {
           <ModalBody>
 
             <InputGroup>
-            <label><FaUserAlt /></label>
-            <Input placeholder="nome" name="nome" type="text" onChange={this.onChange} required />
+            <label className="inputLabelNew"><FaUserAlt /></label>
+            <Input className="inputNew" placeholder="nome" name="nome" type="text" onChange={this.onChange} required />
             </InputGroup>
 
             <InputGroup>
-            <label><FaAt /></label>
-            <Input placeholder="e-mail" name="email" type="email" onChange={this.onChange} required />
+            <label className="inputLabelNew"><FaAt /></label>
+            <Input className="inputNew" placeholder="e-mail" name="email" type="email" onChange={this.onChange} required />
             </InputGroup>
 
             <InputGroup>
-            <label><FaMoneyCheck /></label>
-            <Input placeholder="cpf" name="cpf" type="text" onChange={this.onChange} required />
+            <label className="inputLabelNew"><FaMoneyCheck /></label>
+            <Input className="inputNew" placeholder="cpf" name="cpf" type="text" onChange={this.onChange} required />
             </InputGroup>
 
             <InputGroup>
-            <label><FaCalendarAlt /></label>
-            <Input placeholder="data de nascimento" name="nascimento" type="date" onChange={this.onChange} required />
+            <label className="inputLabelNew"><FaCalendarAlt /></label>
+            <Input className="inputNew" placeholder="data de nascimento" name="nascimento" type="date" onChange={this.onChange} required />
             </InputGroup>
 
             <InputGroup>
-            <label><FaKey /></label>
-            <Input placeholder="senha" name="senha" type="password" onChange={this.onChange} required />
+            <label className="inputLabelNew"><FaKey /></label>
+            <Input className="inputNew" placeholder="senha" name="senha" type="password" onChange={this.onChange} required />
             </InputGroup>
 
               {
@@ -81,8 +81,8 @@ class CadastroPage extends Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button outline color="success" onClick={this.onSubmit}>Cadastrar</Button>
-            <Button outline color="danger" onClick={this.toggle}>Cancelar</Button>
+            <Button className="buttonNew" color="success" onClick={this.onSubmit}>Cadastrar</Button>
+            <Button className="buttonNew" color="danger" onClick={this.toggle}>Cancelar</Button>
           </ModalFooter>
         </Modal>
 

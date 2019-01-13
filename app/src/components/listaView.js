@@ -22,8 +22,8 @@ class listaView extends Component {
 
     busca = (e) => {
         let valor = e.target.value;
-        this.setState({busca:valor});
-        this.lista();
+        buscaTarefas(valor)
+        .then(res => this.setState({busca: valor, lista: res.data}));
     }
 
     removeTarefa = async (id) => {
@@ -63,21 +63,22 @@ class listaView extends Component {
 
         return (
             <div>
-
-                <h1>lista de tarefas</h1>
-                <Input onChange={this.busca} value={this.state.busca} placeholder="busca por título" />
+                <div className="titlePanel2">
+                    <h1 className="title2">Lista de Tarefas </h1>
+                </div>
+                <Input className="inputNew" onChange={this.busca} value={this.state.busca} placeholder="busca por título" />
 
                 { 
                     lista.length > 0 
                     ? (
                         <div>
-                            <Table>
-                                <tr>
-                                    <th width='10'>Nº</th>
-                                    <th>Título</th>
-                                    <th>Descrição</th>
-                                    <th width='50'>Concluida</th>
-                                    <th width='150'>...</th>
+                            <Table className="tableNew">
+                                <tr className="rowNew">
+                                    <th className="columnNew">Nº</th>
+                                    <th className="columnNew">Título</th>
+                                    <th className="columnNew">Descrição</th>
+                                    <th className="columnNew">Concluida</th>
+                                    <th className="columnNew">Opções</th>
                                 </tr>
                                 {
                                     lista.map ((tarefa, index) => 
@@ -92,7 +93,7 @@ class listaView extends Component {
                             </Table>
                         </div>
                     ) :  (
-                        <Alert color='warning'>Nenhuma tarefa encontrada</Alert> 
+                        <Alert className="alertNew">Nenhuma tarefa encontrada</Alert> 
                     )
                 
                 }

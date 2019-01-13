@@ -6,18 +6,6 @@ const myConf = () => {
     return {headers:{'x-access-token': localStorage.getItem('token') }}
 }
 
-// export const login = (data) => {
-//     return axios.post (`${BASEURL}/usuarios/login`, data)
-//     .then( res => {
-//         let token = res.data.token;
-//         let {id, nome} = res.data.usuario;
-//         localStorage.setItem('token', token);
-//         localStorage.setItem('id',id);
-//         setAutenticado(true);
-//     })
-//     .catch( err => console.log(err))
-// }
-
 export const login = (data) => {
     return axios.post (`${BASEURL}/usuarios/login`, data);
 }
@@ -41,7 +29,6 @@ export const cadUsuario = (data) => {
 export const editarUsuario = (data) => {
     let {id, nome, nascimento, cpf, email, senha} = data;
     return axios.put (`${BASEURL}/usuarios/${id}`, {nome, email, nascimento, cpf, senha}, myConf());
-    //.then( res => { localStorage.setItem('userData', JSON.stringify(res.data)) })
 }
 
 export const cadTarefa = (data) => {

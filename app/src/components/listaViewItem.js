@@ -43,35 +43,37 @@ class listaViewItem extends Component {
 
         if (!this.state.edit){
             return (
-                <tr>
-                    <td>{this.props.index+1}</td>
-                    <td>{this.props.tarefa.titulo}</td>
-                    <td>{this.props.tarefa.descricao}</td>
-                    <td>
+                <tr className="rowNew">
+                    <td className="columnNew">{this.props.index+1}</td>
+                    <td className="columnNew">{this.props.tarefa.titulo}</td>
+                    <td className="columnNew">{this.props.tarefa.descricao}</td>
+                    <td className="columnNew">
                         { this.props.tarefa.concluida === 1 ? <span className='text-success'>SIM</span> : <span className='text-warning'>NÃO</span> } &nbsp;
                     </td>
-                    <td className='btn-table'>
-                        <Button outline size='sm' color='primary' title='alterar estado' onClick={this.alterarEstado}><FaRedo /></Button>
-                        <Button outline size='sm' color='warning' title='editar' onClick={this.abrirForm}><FaPencilAlt /></Button>
-                        <Button outline size='sm' color='danger' title='deletar' onClick={this.removeTarefa}><FaTrash /></Button>
+                    <td className="columnNew">
+                        <Button className="buttonNew2" onClick={this.alterarEstado}> marcar </Button> 
+                        <Button className="buttonNew2" onClick={this.abrirForm}> editar </Button> 
+                        <Button className="buttonNew2" onClick={this.removeTarefa}> deletar </Button> 
                     </td>
                 </tr>
                 );
         }
         return (
-            <tr>
-                <td>{this.props.index+1}</td>
-                <td><input class='input-table' name="titulo" value={this.state.titulo} onChange={this.onChange} /></td>
-                <td><input class='input-table' name="descricao" value={this.state.descricao} onChange={this.onChange} /></td>
-                <td>
-                { this.props.tarefa.concluida === 1 ? <span className='text-success'>SIM</span> : <span className='text-warning'>NÃO</span> } &nbsp;
+
+            <tr className="rowNew">
+                <td className="columnNew">{this.props.index+1}</td>
+                <td className="columnNew"><input class='inputNew' name="titulo" value={this.state.titulo} onChange={this.onChange} /></td>
+                <td className="columnNew"><input class='inputNew' name="descricao" value={this.state.descricao} onChange={this.onChange} /></td>
+                <td className="columnNew">
+                    { this.props.tarefa.concluida === 1 ? <span className='text-success'>SIM</span> : <span className='text-warning'>NÃO</span> } &nbsp;
                 </td>
-                <td>
-                    <Button outline size='sm' color='primary' title='alterar estado' onClick={this.alterarEstado}><FaRedo /></Button>
-                    <Button outline size='sm' color='success' title='salvar' onClick={this.editarTarefa}><FaSave /></Button>
-                    <Button outline size='sm' color='danger' title='cancelar' onClick={this.fecharForm}>< FaTimes /></Button>
+                <td className="columnNew">
+                    <Button className="buttonNew2" onClick={this.alterarEstado}> marcar </Button> 
+                    <Button className="buttonNew2" onClick={this.editarTarefa}> salvar </Button> 
+                    <Button className="buttonNew2" onClick={this.fecharForm}> cancelar </Button> 
                 </td>
             </tr>
+
         );
     }
 

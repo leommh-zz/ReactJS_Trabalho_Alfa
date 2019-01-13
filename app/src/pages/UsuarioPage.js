@@ -51,41 +51,41 @@ class UsuarioPage extends Component {
         <div>
 
           <InputGroup>
-          <label><FaUserAlt /></label>
-            <Input type="text" id="nome" name="nome" value={usuario.nome} onChange={this.onChange} disabled={edit ? false : true} />
+          <label className="inputLabelNew">Nome</label>
+            <Input className="inputNew" type="text" id="nome" name="nome" value={usuario.nome} onChange={this.onChange} disabled={edit ? false : true} />
           </InputGroup>
           
           <InputGroup>
-          <label><FaAt /></label>
-            <Input type="email" id="email" name="email" value={usuario.email} onChange={this.onChange} disabled={edit ? false : true} />
+          <label className="inputLabelNew">Email</label>
+            <Input className="inputNew" type="email" id="email" name="email" value={usuario.email} onChange={this.onChange} disabled={edit ? false : true} />
           </InputGroup>
           
           <InputGroup>
-          <label><FaMoneyCheck /></label>
-            <Input name="cpf" id="cpf" value={usuario.cpf} onChange={this.onChange} disabled={edit ? false : true} />
+          <label className="inputLabelNew">CPF</label>
+            <Input className="inputNew" name="cpf" id="cpf" value={usuario.cpf} onChange={this.onChange} disabled={edit ? false : true} />
           </InputGroup>
           
           <InputGroup>
-          <label><FaCalendarAlt /></label>
-            <Input type="date" id="nascimento" name="nascimento" value={usuario.nascimento} onChange={this.onChange} disabled={edit ? false : true} />
+          <label className="inputLabelNew">Data de Nascimento</label>
+            <Input className="inputNew" type="date" id="nascimento" name="nascimento" value={usuario.nascimento} onChange={this.onChange} disabled={edit ? false : true} />
           </InputGroup>
 
           {
             edit && 
             <InputGroup>
-            <label><FaKey /></label>
-              <Input type="password" name="senha" value={usuario.senha} onChange={this.onChange} />
+            <label className="inputLabelNew">Senha</label>
+              <Input className="inputNew" type="password" name="senha" value={usuario.senha} onChange={this.onChange} />
             </InputGroup>
           }
 
           <center>
           {
             !edit 
-            ? <Button outline color="warning" onClick={this.editar}>editar</Button> 
+            ? <Button className="buttonNew" color="warning" onClick={this.editar}>editar</Button> 
             : (
               <div>
-                <Button outline color="success" onClick={this.onSubmit}>salvar</Button>
-                <Button outline color="danger" onClick={this.cancela}>cancelar</Button>
+                <Button className="buttonNew" color="success" onClick={this.onSubmit}>salvar</Button>
+                <Button className="buttonNew" color="danger" onClick={this.cancela}>cancelar</Button>
               </div>
             )
           }

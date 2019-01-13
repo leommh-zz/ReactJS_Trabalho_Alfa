@@ -39,14 +39,14 @@ class TaskForm extends Component {
         return (
             <div>
 
-                <Button color="primary" onClick={this.toggle}>Nova Tarefa</Button>
+                <Button className="buttonNew" color="primary" onClick={this.toggle}>Nova Tarefa</Button>
                 <form onSubmit={this.onSubmit}>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Nova Tarefa</ModalHeader>
-                        <ModalBody>
+                    <Modal className="modalNew" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader className="modalHeaderNew" toggle={this.toggle}>Nova Tarefa</ModalHeader>
+                        <ModalBody className="modalBodyNew">
                             <div>
-                                <Input type="text" name="titulo" placeholder="título" onChange={this.onChange}  />
-                                <Input type="text" name="descricao" placeholder="descrição" onChange={this.onChange} />
+                                <Input className="inputNew" type="text" name="titulo" placeholder="título" onChange={this.onChange}  />
+                                <Input className="inputNew" type="text" name="descricao" placeholder="descrição" onChange={this.onChange} />
                                 {
                                     erros !== undefined && erros.length > 0 && (
                                         <Alert color="danger"> 
@@ -56,10 +56,10 @@ class TaskForm extends Component {
                                 }
                             </div>
                         </ModalBody>
-                        <ModalFooter>
-                            <Button type="submit" color="primary" onClick={this.onSubmit}>Cadastrar</Button>
+                        <ModalFooter className="modalFooterNew">
+                            <Button className="buttonNew" type="submit" color="primary" onClick={this.onSubmit}>Cadastrar</Button>
                             {' '}
-                            <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
+                            <Button className="buttonNew" color="secondary" onClick={this.toggle}>Cancelar</Button>
                         </ModalFooter>
                     </Modal>
                 </form>

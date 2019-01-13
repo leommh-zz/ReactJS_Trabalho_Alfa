@@ -21,8 +21,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Container>
-          <header>
-            <h1>Controle de Tarefas </h1>
+          <header className="titlePanel">
+            <h1 className="title">Controle de Tarefas </h1>
           </header>
           
           <Menu />

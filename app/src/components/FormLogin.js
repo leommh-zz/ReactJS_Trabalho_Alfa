@@ -21,13 +21,13 @@ class FormLogin extends Component {
             <div className="login-page">
                 <h1>Login</h1>
 
-                    <Input type="text" name="email" placeholder="email" onChange={this.onInputChange}/>
-                    <Input type="password" name="senha" placeholder="senha" onChange={this.onInputChange} />
+                    <Input className="inputNew" type="text" name="email" placeholder="email" onChange={this.onInputChange}/>
+                    <Input className="inputNew" type="password" name="senha" placeholder="senha" onChange={this.onInputChange} />
 
                 <center>
                     {this.props.erros && <Alert color='danger'> {this.props.erros} </Alert> }
-                    <Button outline color="success" onClick={this.onLoginClick}> entrar </Button> 
-                    <Button outline color="primary" onClick={this.props.cadastro}> cadastro </Button> 
+                    <Button className="buttonNew" color="success" onClick={this.onLoginClick}> entrar </Button> 
+                    <Button className="buttonNew" color="primary" onClick={this.props.cadastro}> cadastro </Button> 
                 </center>
             </div>
         );

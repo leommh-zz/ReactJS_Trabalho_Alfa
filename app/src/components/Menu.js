@@ -15,13 +15,13 @@ const Menu = (props) => {
 
             <Nav className="menu">
                 <NavItem>
-                <Link className="nav-link" to="/"> Home </Link>
+                    <Link className="nav-link" to="/"> Home </Link>
                 </NavItem>
 
                 { 
                     aut && (
                         <NavItem>
-                        <Link className="nav-link" to="/tarefas"> Tarefas </Link>
+                            <Link className="nav-link" to="/tarefas"> Tarefas </Link>
                         </NavItem>
                     ) 
                 }
@@ -29,16 +29,16 @@ const Menu = (props) => {
                 {
                     aut && (
                         <NavItem>
-                        <a  href="/" 
-                            className="nav-link" 
-                            onClick={
-                                ()=> {
+                            <a  
+                                href="/" 
+                                className="nav-link" 
+                                onClick={ ()=> {
                                     setAutenticado(false);
                                     props.history.push('/');
                                 }
                             }>
-                            Sair
-                        </a>
+                                Sair
+                            </a>
                         </NavItem>
                     )
                 }

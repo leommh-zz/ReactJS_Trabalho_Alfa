@@ -31,28 +31,23 @@ class FormCadastro extends Component {
         return (
             <div>
                 <InputGroup>
-                    <label><FaUserAlt /></label>
-                    <Input placeholder="nome" name="nome" type="text" onChange={this.onChange} required />
+                    <Input className="inputNew" placeholder="nome" name="nome" type="text" onChange={this.onChange} required />
                 </InputGroup>
 
                 <InputGroup>
-                    <label><FaAt /></label>
-                    <Input placeholder="e-mail" name="email" type="email" onChange={this.onChange} required />
+                    <Input className="inputNew" placeholder="e-mail" name="email" type="email" onChange={this.onChange} required />
                 </InputGroup>
 
                 <InputGroup>
-                    <label><FaMoneyCheck /></label>
-                    <Input maxLength={11} placeholder="cpf" name="cpf" type="text" onChange={this.onChange} required />
+                    <Input className="inputNew" maxLength={11} placeholder="cpf" name="cpf" type="text" onChange={this.onChange} required />
                 </InputGroup>
 
                 <InputGroup>
-                    <label><FaCalendarAlt /></label>
-                    <Input placeholder="data de nascimento" name="nascimento" type="date" onChange={this.onChange} required />
+                    <Input className="inputNew" placeholder="data de nascimento" name="nascimento" type="date" onChange={this.onChange} required />
                 </InputGroup>
 
                 <InputGroup>
-                    <label><FaKey /></label>
-                    <Input placeholder="senha" name="senha" type="password" onChange={this.onChange} required />
+                    <Input className="inputNew" placeholder="senha" name="senha" type="password" onChange={this.onChange} required />
                 </InputGroup>
 
                 {
@@ -63,8 +58,8 @@ class FormCadastro extends Component {
                     )
                 }
                 <center>
-                    <Button outline color="success" onClick={this.onSubmit}>Cadastrar</Button>
-                    <Button outline color="danger" onClick={this.props.cancela}>Cancelar</Button>
+                    <Button color="success" onClick={this.onSubmit}>Cadastrar</Button>
+                    <Button color="danger" onClick={this.props.cancela}>Cancelar</Button>
                 </center>
 
             </div>
